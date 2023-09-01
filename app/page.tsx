@@ -1,14 +1,13 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 import { useState } from "react";
 
 import {
   getBoxOfficeList,
   getMovieDetail,
   createMovieList,
-} from "@/api/getBoxOfficeList";
-import crawlWatcha, { getWatchaUrl } from "@/api/watchaCrawler";
-import tomatoCrawler from "@/api/tomatoCrawler";
+} from "./_api/getBoxOfficeList";
+import crawlWatcha, { getWatchaUrl } from "./_api/watchaCrawler";
+import tomatoCrawler from "./_api/tomatoCrawler";
 
 export default async function Home() {
   // tomatoCrawler("Mission: Impossible - Dead Reckoning - PART ONE");
