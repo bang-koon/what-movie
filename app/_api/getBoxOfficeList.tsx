@@ -1,3 +1,4 @@
+import { Actor, BoxOfficeList, MovieDetail } from "../types";
 import crawlWatcha from "./watchaCrawler";
 import crawlTomato from "./tomatoCrawler";
 
@@ -18,7 +19,10 @@ export const getBoxOfficeList = async () => {
   return json.boxOfficeResult.dailyBoxOfficeList;
 };
 
-export const getMovieDetail = async (title: string, releaseDate: string) => {
+export const getMovieDetail = async (
+  title: string,
+  releaseDate: string
+): Promise<MovieDetail> => {
   const URL = process.env.KMDB_URL;
 
   const params = {
@@ -33,12 +37,6 @@ export const getMovieDetail = async (title: string, releaseDate: string) => {
   }
 
   const detail = (await res.json()).Data[0].Result[0];
-
-  interface Actor {
-    actorNm: string;
-    actorEnNm: string;
-    actorId: string;
-  }
 
   // data
   const actors = detail.actors.actor.map((actor: Actor) => actor.actorNm);
@@ -57,16 +55,10 @@ export const getMovieDetail = async (title: string, releaseDate: string) => {
   };
 };
 
-interface boxOfficeList {
-  [key: string]: unknown;
-  movieNm: string;
-  openDt: string;
-}
-
 export const createMovieList = async () => {
-  const boxOfficeList: boxOfficeList[] = await getBoxOfficeList();
+  const boxOfficeList: BoxOfficeList[] = await getBoxOfficeList();
   const detail = await Promise.all(
-    boxOfficeList.map((movie: boxOfficeList) =>
+    boxOfficeList.map((movie: BoxOfficeList) =>
       getMovieDetail(movie.movieNm, movie.openDt)
     )
   );
