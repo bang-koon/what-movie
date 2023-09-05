@@ -1,0 +1,12 @@
+@mixin f-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-Container {
+  max-width: 690px;
+}
+.cardBox {
+  @include f-center;
+}
