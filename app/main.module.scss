@@ -1,12 +1,26 @@
-@mixin f-center {
+@mixin flexCenter {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 }
 
-#main-Container {
+.layout {
   max-width: 690px;
+  margin: auto;
+  @include flexCenter;
 }
-.cardBox {
-  @include f-center;
+
+.cardContainer {
+  @include flexCenter;
+  flex-direction: row;
+}
+
+.title {
+  margin: 12px 4px 36px;
+  align-self: flex-start;
+  h1 {
+    font-size: 26px;
+    font-weight: 500;
+  }
 }
