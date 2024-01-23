@@ -2,6 +2,7 @@ import "./globals.css";
 import styles from "./main.module.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Nav from "./_components/nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className={styles.layout}>
-          <header className={styles.title}>
-            <h1>뭐 보까?</h1>
-          </header>
+          <Nav />
           <main id="main-container">{children}</main>
         </div>
       </body>
