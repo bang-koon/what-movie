@@ -11,22 +11,31 @@
   @include flexCenter;
 }
 
-.cardContainer {
-  @include flexCenter;
-  flex-direction: row;
-}
-
 .nav {
   @include flexCenter();
-  width: calc(100vw - 48px);
+  width: 100vw;
   height: 60px;
   align-self: flex-start;
   align-items: flex-start;
   margin: 0 24px;
-  // margin: 12px 4px 36px;
   h1 {
     font-size: 32px;
     font-weight: 400;
     letter-spacing: -5px;
   }
+}
+
+.mainContainer {
+  width: 100%;
+  height: calc(100vh - 60px);
+  @include flexCenter();
+}
+
+.cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: calc(100% - 48px);
+  height: 100%;
+  margin: 0 24px;
 }

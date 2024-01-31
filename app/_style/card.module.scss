@@ -1,8 +1,79 @@
-@import "variables.module";
+@import "variables";
 
-.cardBox {
+.cardWrap {
   @include flexCenter;
+  position: relative;
   flex-direction: column;
-  border: 1px solid black;
+  width: 25%;
+  max-width: 220px;
+  min-width: 150px;
   margin: 12px;
+}
+
+.cardNumber {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.posterWrap {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 145.37%;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.contents {
+  @include flexCenter;
+  align-items: flex-start;
+  flex-flow: column;
+  width: 100%;
+  padding: 4px;
+  p {
+    width: 100%;
+    font-size: 14px;
+    color: #434343;
+    letter-spacing: -0.25px;
+    line-height: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  * {
+    margin-top: 3px;
+  }
+}
+
+.title-director {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  h3 {
+    width: 70%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #272424;
+    letter-spacing: -0.25px;
+    line-height: 15px;
+    margin-right: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  p {
+    margin-left: auto;
+    width: 40%;
+    text-align: right; // width를 30% 주고싶은데 왼쪽 정렬 됨
+  }
+}
+
+.actor {
+  margin-top: 5px;
+}
+
+.rating {
+  margin-top: 5px;
 }

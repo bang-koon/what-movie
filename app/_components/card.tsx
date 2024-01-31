@@ -1,19 +1,34 @@
-const Card = () => (
-  <>
-    <article>
-      <div className="card-header">
-        <p className="movie-title">제목</p>
+import Image from "next/image";
+import styles from "../_style/card.module.scss";
+import { CardProps } from "../types";
+
+const Card = ({ movieDetail }: CardProps) => {
+  return (
+    <article className={styles.cardWrap}>
+      <div className={styles.posterWrap}>
+        <Image
+          src={movieDetail.poster}
+          alt={movieDetail.title}
+          fill
+          objectFit="cover"
+          quality={100}
+        />
+        <span className={styles.cardNumber}> 1 </span>
       </div>
-      <div className="card-poster">
-        imgimgimgimgimgimg{/* img, alt 한글, 영어 이름 넣어주기 */}
-      </div>
-      <div className="card-contents">
-        <p className="directors">감독:</p>
-        <p className="actors">배우</p>
-        <p className="watcha">왓챠: 3.4</p>
-        <p className="tomato">리튼: 75%</p>
+      <div className={styles.contents}>
+        <div className={styles["title-director"]}>
+          <h3>{movieDetail.title}</h3>
+          <p>{movieDetail.directors}</p>
+        </div>
+        <p>
+          {movieDetail.actors[0]}, {movieDetail.actors[1]}
+        </p>
+        <div className={styles.rating}>
+          <p>왓챠: {movieDetail.watchaRating}</p>
+          <p>도마: {movieDetail.tomatoRating}</p>
+        </div>
       </div>
     </article>
-  </>
-);
+  );
+};
 export default Card;

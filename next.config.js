@@ -6,6 +6,14 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "file.koreafilm.or.kr",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

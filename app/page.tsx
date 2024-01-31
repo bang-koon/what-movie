@@ -1,20 +1,9 @@
 import "server-only";
-import Card from "./_components/card";
-
-import {
-  getBoxOfficeList,
-  getMovieDetail,
-  createMovieList,
-} from "./_api/getBoxOfficeList";
-import crawlWatcha, { getWatchaUrl } from "./_api/watchaCrawler";
-import tomatoCrawler from "./_api/tomatoCrawler";
+import Main from "./_components/main";
+import { createMovieList } from "./_api/getBoxOfficeList";
 
 export default async function Home() {
   const movieList = await createMovieList();
-  console.log(movieList);
-  return (
-    <>
-      <Card />
-    </>
-  );
+  // console.log(movieList);
+  return <Main movieList={movieList} />;
 }

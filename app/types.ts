@@ -23,3 +23,7 @@ export interface MovieDetail {
   tomatoRating: string;
   poster: string;
 }
+
+export interface MovieProps {
+  movieList: MovieDetail[];
+}
