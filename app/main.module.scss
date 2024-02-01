@@ -14,20 +14,29 @@
 }
 
 .nav {
-  @include flexCenter();
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   width: 100vw;
   height: 60px;
-  align-self: flex-start;
-  align-items: flex-start;
   margin-bottom: 12px;
   padding: 0 30px;
   margin-bottom: 30px;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $grey-border;
   h1 {
-    color: $head-color;
+    color: $head-font;
     font-size: 28px;
     font-weight: 400;
     letter-spacing: -0.5px;
+  }
+  p {
+    color: $grey-font;
+    margin: 8px 0 0 16px;
+    padding: 4px;
+    cursor: pointer;
+    &:hover {
+      color: $grey-hover;
+    }
   }
 }
 
@@ -37,7 +46,7 @@
   & > h2 {
     align-self: flex-start;
     padding-left: 30px;
-    color: $head-color;
+    color: $head-font;
     font-size: 20px;
     font-weight: 500;
     letter-spacing: -0.5px;
