@@ -2,7 +2,7 @@ import styles from "../main.module.scss";
 
 const Header = () => (
   <header className={styles.nav}>
-    <h1>whatmovie</h1>
+    <h1>영화 뭐보지?</h1>
   </header>
 );
 

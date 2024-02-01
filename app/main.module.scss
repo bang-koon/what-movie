@@ -1,3 +1,5 @@
+@import "./_style/variables";
+
 @mixin flexCenter {
   display: flex;
   flex-flow: column;
@@ -17,18 +19,36 @@
   height: 60px;
   align-self: flex-start;
   align-items: flex-start;
-  margin: 0 24px;
+  margin-bottom: 12px;
+  padding: 0 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $border-color;
   h1 {
-    font-size: 32px;
+    color: $head-color;
+    font-size: 28px;
     font-weight: 400;
-    letter-spacing: -5px;
+    letter-spacing: -0.5px;
   }
 }
 
 .mainContainer {
-  width: 100%;
-  height: calc(100vh - 60px);
   @include flexCenter();
+  width: 100%;
+  & > h2 {
+    align-self: flex-start;
+    padding-left: 30px;
+    color: $head-color;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+}
+
+.cardContainerWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .cardContainer {

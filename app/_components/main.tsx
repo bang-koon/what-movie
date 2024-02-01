@@ -6,7 +6,8 @@ const Main = async ({ movieList }: MainProps) => {
   console.log(movieList);
   return (
     <main className={styles.mainContainer}>
-      <section className={styles.cardContainer}>
+      <h2>241010 박스오피스 순위</h2>
+      <div className={styles.cardContainer}>
         <Card movieDetail={movieList[0]} />
         <Card movieDetail={movieList[1]} />
         <Card movieDetail={movieList[2]} />
@@ -14,7 +15,7 @@ const Main = async ({ movieList }: MainProps) => {
         <Card movieDetail={movieList[4]} />
         <Card movieDetail={movieList[5]} />
         <Card movieDetail={movieList[6]} />
-      </section>
+      </div>
     </main>
   );
 };
