@@ -24,6 +24,10 @@ export interface MovieDetail {
   poster: string;
 }
 
-export interface MovieProps {
+export interface MainProps {
   movieList: MovieDetail[];
+}
+
+export interface CardProps {
+  movieDetail: MovieDetail;
 }

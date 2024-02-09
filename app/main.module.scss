@@ -30,6 +30,7 @@
     letter-spacing: -0.5px;
   }
   p {
+    width: 36px;
     color: $grey-font;
     margin: 8px 0 0 16px;
     padding: 4px;
@@ -67,4 +68,16 @@
   width: calc(100% - 48px);
   height: 100%;
   margin: 0 24px;
+}
+
+// calendar
+.calendarContainer {
+  position: relative;
+  width: 350px;
+}
+
+.calendar {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
 }
