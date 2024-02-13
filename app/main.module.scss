@@ -1,0 +1,83 @@
+@import "./_style/variables";
+
+@mixin flexCenter {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout {
+  min-width: 690px;
+  margin: auto;
+  @include flexCenter;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 60px;
+  margin-bottom: 12px;
+  padding: 0 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $grey-border;
+  h1 {
+    color: $head-font;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+  }
+  p {
+    width: 36px;
+    color: $grey-font;
+    margin: 8px 0 0 16px;
+    padding: 4px;
+    cursor: pointer;
+    &:hover {
+      color: $grey-hover;
+    }
+  }
+}
+
+.mainContainer {
+  @include flexCenter();
+  width: 100%;
+  & > h2 {
+    align-self: flex-start;
+    padding-left: 30px;
+    color: $head-font;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+}
+
+.cardContainerWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: calc(100% - 48px);
+  height: 100%;
+  margin: 0 24px;
+}
+
+// calendar
+.calendarContainer {
+  position: relative;
+  width: 350px;
+}
+
+.calendar {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+}

@@ -1,4 +1,19 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+const path = require("path");
+
+const nextConfig = {
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "file.koreafilm.or.kr",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;

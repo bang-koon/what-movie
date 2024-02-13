@@ -1,0 +1,10 @@
+$head-font: #272424;
+$grey-font: #747474;
+$grey-border: #dbdbdb;
+$grey-hover: #a0a0a0;
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
