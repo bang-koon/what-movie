@@ -3,7 +3,6 @@ import { MainProps } from "../types";
 import Card from "./card";
 
 const Main = async ({ movieList }: MainProps) => {
-  console.log(movieList);
   return (
     <main className={styles.mainContainer}>
       <h2>241010 박스오피스 순위</h2>
