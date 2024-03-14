@@ -8,7 +8,7 @@ const Main = async ({ movieList }: MainProps) => {
       <h2>241010 박스오피스 순위</h2>
       <div className={styles.cardContainer}>
         {movieList.map((v, i) => (
-          <Card movieDetail={movieList[i]}></Card>
+          <Card movieDetail={movieList[i]} key={i}></Card>
         ))}
       </div>
     </main>
