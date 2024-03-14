@@ -28,6 +28,11 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      KOBIS_URL: ${{ secrets.KOBIS_URL }}
+      KOBIS_KEY: ${{ secrets.KOBIS_KEY }}
+      KMDB_URL: ${{ secrets.KMDB_URL }}
+      KMDB_KEY: ${{ secrets.KMDB_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
