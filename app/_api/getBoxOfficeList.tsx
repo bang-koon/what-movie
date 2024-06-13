@@ -2,11 +2,19 @@ import { Actor, BoxOfficeList, MovieDetail } from "../types";
 import crawlWatcha from "./watchaCrawler";
 import crawlTomato from "./tomatoCrawler";
 
+const getDate = () => {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const year = yesterday.getFullYear();
+  const month = (yesterday.getMonth() + 1).toString().padStart(2, "0");
+  const day = yesterday.getDate().toString().padStart(2, "0");
+  return `${year}${month}${day}`;
+};
 export const getBoxOfficeList = async () => {
   const URL = process.env.KOBIS_URL;
   const KEY = process.env.KOBIS_KEY as string;
 
-  const params = { key: KEY, targetDt: "20230829" };
+  const params = { key: KEY, targetDt: getDate() };
   const queryParams = new URLSearchParams(params).toString();
 
   const res = await fetch(`${URL}?${queryParams}`);

@@ -5,11 +5,13 @@ import Card from "./card";
 const Main = async ({ movieList }: MainProps) => {
   return (
     <main className={styles.mainContainer}>
-      <h2>241010 박스오피스 순위</h2>
+      <h2>어제 박스오피스 순위</h2>
       <div className={styles.cardContainer}>
         {movieList.map((v, i) => (
           <Card movieDetail={movieList[i]} key={i}></Card>
         ))}
+        <Card movieDetail={movieList[0]} hidden={true}></Card>
+        <Card movieDetail={movieList[0]} hidden={true}></Card>
       </div>
     </main>
   );
