@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "../_style/card.module.scss";
 import { CardProps } from "../types";
 
-const Card = ({ movieDetail, hidden }: CardProps) => {
+const Card = ({ movieDetail, hidden, rank }: CardProps) => {
   return (
     <>
       {hidden ? (
@@ -17,7 +17,10 @@ const Card = ({ movieDetail, hidden }: CardProps) => {
               objectFit="cover"
               quality={100}
             />
-            <span className={styles.cardNumber}> 1 </span>
+            <span className={styles.cardRankBox}>
+              {" "}
+              <p className={styles.cardRank}> {rank ? rank : ""} </p>
+            </span>
           </div>
           <div className={styles.contents}>
             <div className={styles["title-director"]}>

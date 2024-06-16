@@ -31,4 +31,5 @@ export interface MainProps {
 export interface CardProps {
   movieDetail: MovieDetail;
   hidden?: boolean;
+  rank?: number;
 }
