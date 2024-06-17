@@ -91,7 +91,18 @@
 }
 
 .rating {
+  height: 52px;
   margin-top: 5px;
+  p {
+    margin: 0 6px;
+    width: 100%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .hidden {

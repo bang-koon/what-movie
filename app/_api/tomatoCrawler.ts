@@ -15,7 +15,7 @@ const crawlTomato = async (title: string) => {
   const ratingIndex = body.indexOf("tomatometerscore");
   const rating = body.slice(ratingIndex + 18, ratingIndex + 20);
 
-  return /[0-9]/g.test(rating) ? rating + "%" : "";
+  return /[0-9]/g.test(rating) ? rating + "% (신선도)" : "";
 };
 
 export default crawlTomato;

@@ -31,8 +31,32 @@ const Card = ({ movieDetail, hidden, rank }: CardProps) => {
               {movieDetail.actors[0]}, {movieDetail.actors[1]}
             </p>
             <div className={styles.rating}>
-              <p>왓챠: {movieDetail.watchaRating}</p>
-              <p>도마: {movieDetail.tomatoRating}</p>
+              {movieDetail.watchaRating ? (
+                <div>
+                  <Image
+                    src="watcha.svg"
+                    alt="watcha pedia logo"
+                    width={20}
+                    height={20}
+                  ></Image>
+                  <p>: {movieDetail.watchaRating}</p>
+                </div>
+              ) : (
+                <></>
+              )}
+              {movieDetail.tomatoRating ? (
+                <div>
+                  <Image
+                    src="/fresh_tomato.svg"
+                    alt="fresh tomato"
+                    width={20}
+                    height={20}
+                  ></Image>
+                  <p>: {movieDetail.tomatoRating}</p>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </article>
