@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import styles from "../_style/card.module.scss";
 import { CardProps } from "../types";
+import Rating from "./rating";
 
 const Card = ({ movieDetail, hidden, rank }: CardProps) => {
   return (
@@ -18,8 +21,7 @@ const Card = ({ movieDetail, hidden, rank }: CardProps) => {
               quality={100}
             />
             <span className={styles.cardRankBox}>
-              {" "}
-              <p className={styles.cardRank}> {rank ? rank : ""} </p>
+              <p className={styles.cardRank}>{rank ? rank : ""}</p>
             </span>
           </div>
           <div className={styles.contents}>
@@ -31,31 +33,11 @@ const Card = ({ movieDetail, hidden, rank }: CardProps) => {
               {movieDetail.actors[0]}, {movieDetail.actors[1]}
             </p>
             <div className={styles.rating}>
-              {movieDetail.watchaRating ? (
-                <div>
-                  <Image
-                    src="watcha.svg"
-                    alt="watcha pedia logo"
-                    width={20}
-                    height={20}
-                  ></Image>
-                  <p>: {movieDetail.watchaRating}</p>
-                </div>
-              ) : (
-                <></>
+              {movieDetail.watchaRating && (
+                <Rating type="watcha" rating={movieDetail.watchaRating} />
               )}
-              {movieDetail.tomatoRating ? (
-                <div>
-                  <Image
-                    src="/fresh_tomato.svg"
-                    alt="fresh tomato"
-                    width={20}
-                    height={20}
-                  ></Image>
-                  <p>: {movieDetail.tomatoRating}</p>
-                </div>
-              ) : (
-                <></>
+              {movieDetail.tomatoRating && (
+                <Rating type="tomato" rating={movieDetail.tomatoRating} />
               )}
             </div>
           </div>
@@ -64,4 +46,5 @@ const Card = ({ movieDetail, hidden, rank }: CardProps) => {
     </>
   );
 };
+
 export default Card;

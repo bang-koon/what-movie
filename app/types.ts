@@ -33,3 +33,9 @@ export interface CardProps {
   hidden?: boolean;
   rank?: number;
 }
+
+export interface RatingProps{
+  type: 'watcha' | 'tomato';
+  rating: string;
+
+}
