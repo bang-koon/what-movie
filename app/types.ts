@@ -31,4 +31,11 @@ export interface MainProps {
 export interface CardProps {
   movieDetail: MovieDetail;
   hidden?: boolean;
+  rank?: number;
+}
+
+export interface RatingProps{
+  type: 'watcha' | 'tomato';
+  rating: string;
+
 }

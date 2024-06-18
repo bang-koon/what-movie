@@ -10,10 +10,23 @@
   margin: 10px 12px;
 }
 
-.cardNumber {
+.cardRankBox {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  opacity: 0.8;
+  border-radius: 2px;
+  width: 1.4rem;
+  height: 1.4rem;
   left: 10px;
   bottom: 10px;
+}
+
+.cardRank {
+  color: azure;
+  font-size: 0.9rem;
 }
 
 .posterWrap {
@@ -78,7 +91,18 @@
 }
 
 .rating {
+  height: 52px;
   margin-top: 5px;
+  p {
+    margin: 0 6px;
+    width: 100%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .hidden {

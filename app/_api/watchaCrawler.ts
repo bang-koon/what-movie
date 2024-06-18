@@ -33,7 +33,7 @@ export const getWatchaRating = async (href: string | null) => {
   const ratingIndex = body.indexOf("ratingValue");
   const rating = body.slice(ratingIndex + 14, ratingIndex + 17);
 
-  return rating;
+  return /^(?:[0-4]\.[0-9]|5\.0)$/.test(rating) ? rating + " / 5.0" : "";
 };
 
 export default crawlWatcha;

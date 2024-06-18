@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import styles from "../_style/card.module.scss";
 import { CardProps } from "../types";
+import Rating from "./rating";
 
-const Card = ({ movieDetail, hidden }: CardProps) => {
+const Card = ({ movieDetail, hidden, rank }: CardProps) => {
   return (
     <>
       {hidden ? (
@@ -17,7 +20,9 @@ const Card = ({ movieDetail, hidden }: CardProps) => {
               objectFit="cover"
               quality={100}
             />
-            <span className={styles.cardNumber}> 1 </span>
+            <span className={styles.cardRankBox}>
+              <p className={styles.cardRank}>{rank ? rank : ""}</p>
+            </span>
           </div>
           <div className={styles.contents}>
             <div className={styles["title-director"]}>
@@ -28,8 +33,12 @@ const Card = ({ movieDetail, hidden }: CardProps) => {
               {movieDetail.actors[0]}, {movieDetail.actors[1]}
             </p>
             <div className={styles.rating}>
-              <p>왓챠: {movieDetail.watchaRating}</p>
-              <p>도마: {movieDetail.tomatoRating}</p>
+              {movieDetail.watchaRating && (
+                <Rating type="watcha" rating={movieDetail.watchaRating} />
+              )}
+              {movieDetail.tomatoRating && (
+                <Rating type="tomato" rating={movieDetail.tomatoRating} />
+              )}
             </div>
           </div>
         </article>
@@ -37,4 +46,5 @@ const Card = ({ movieDetail, hidden }: CardProps) => {
     </>
   );
 };
+
 export default Card;
