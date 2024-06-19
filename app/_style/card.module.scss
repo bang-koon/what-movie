@@ -4,10 +4,12 @@
   @include flexCenter;
   position: relative;
   flex-direction: column;
-  width: 22%;
-  max-width: 220px;
-  min-width: 150px;
+  width: 17%;
+  min-width: 130px;
   margin: 10px 12px;
+  @media (max-width: 580px) {
+    width: 50%;
+  }
 }
 
 .cardRankBox {
