@@ -37,7 +37,6 @@
   border: 1px solid $grey-border;
   border-radius: 5px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .contents {
@@ -46,10 +45,8 @@
   flex-flow: column;
   width: 100%;
   padding: 4px;
-  cursor: pointer;
 
   p {
-    width: 100%;
     font-size: 14px;
     color: #434343;
     letter-spacing: -0.25px;
@@ -67,27 +64,33 @@
   display: flex;
   flex-flow: row;
   width: 100%;
+  span:nth-child(1) {
+    max-width: 70%;
+  }
+  span:nth-child(2) {
+    max-width: 30%;
+  }
   h3 {
-    width: 70%;
     font-size: 16px;
     font-weight: 500;
     color: $head-font;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     letter-spacing: -0.25px;
     line-height: 15px;
     margin-right: auto;
+  }
+  p {
+    text-align: right;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  p {
-    margin-left: auto;
-    width: 40%;
-    text-align: right; // width를 30% 주고싶은데 왼쪽 정렬 됨
-  }
 }
 
 .actor {
-  margin-top: 5px;
+  width: 70%;
 }
 
 .rating {
@@ -107,4 +110,34 @@
 
 .hidden {
   visibility: hidden;
+}
+
+.tooltip {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  cursor: pointer;
+}
+
+.tooltip::after {
+  visibility: hidden;
+  content: attr(data-title);
+  position: absolute;
+  left: 50%;
+  width: max-content;
+  max-width: 200px;
+  transform: translateX(-50%);
+  padding: 5px;
+  border: $grey-border 1px solid;
+  border-radius: 3px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.tooltip.overflow:hover::after {
+  visibility: visible;
+  background-color: black;
+  color: whitesmoke;
+  opacity: 0.9;
 }

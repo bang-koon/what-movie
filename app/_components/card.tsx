@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import styles from "../_style/card.module.scss";
 import { CardProps } from "../types";
-import Rating from "./rating";
+import CardContents from "./cardContents";
 
 const Card = ({ movieDetail, hidden, rank }: CardProps) => {
   return (
@@ -24,23 +22,7 @@ const Card = ({ movieDetail, hidden, rank }: CardProps) => {
               <p className={styles.cardRank}>{rank ? rank : ""}</p>
             </span>
           </div>
-          <div className={styles.contents}>
-            <div className={styles["title-director"]}>
-              <h3>{movieDetail.title}</h3>
-              <p>{movieDetail.directors}</p>
-            </div>
-            <p>
-              {movieDetail.actors[0]}, {movieDetail.actors[1]}
-            </p>
-            <div className={styles.rating}>
-              {movieDetail.watchaRating && (
-                <Rating type="watcha" rating={movieDetail.watchaRating} />
-              )}
-              {movieDetail.tomatoRating && (
-                <Rating type="tomato" rating={movieDetail.tomatoRating} />
-              )}
-            </div>
-          </div>
+          <CardContents movieDetail={movieDetail} />
         </article>
       )}
     </>
