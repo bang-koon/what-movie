@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import styles from "../_style/card.module.scss";
 import { MovieDetail } from "../types";
 import Rating from "./rating";
+import OverflowTooltip from "./overFlowTooltip";
 
 interface CardContentsProps {
   movieDetail: MovieDetail;
@@ -44,33 +45,21 @@ const CardContents = ({ movieDetail }: CardContentsProps) => {
   return (
     <div className={styles.contents}>
       <div className={styles["title-director"]}>
-        <span
-          className={`${styles.tooltip} ${
-            isTitleOverflow ? styles.overflow : ""
-          }`}
-          data-title={movieDetail.title}
-        >
+        <OverflowTooltip text={movieDetail.title} isOverflow={isTitleOverflow}>
           <h3 ref={titleRef}>{movieDetail.title}</h3>
-        </span>
-        <span
-          className={`${styles.tooltip} ${
-            isDirectorOverflow ? styles.overflow : ""
-          }`}
-          data-title={movieDetail.directors}
+        </OverflowTooltip>
+        <OverflowTooltip
+          text={movieDetail.directors}
+          isOverflow={isDirectorOverflow}
         >
           <p ref={directorRef}>{movieDetail.directors}</p>
-        </span>
+        </OverflowTooltip>
       </div>
-      <span
-        className={`${styles.tooltip} ${
-          isActorsOverflow ? styles.overflow : ""
-        }`}
-        data-title={allActors}
-      >
+      <OverflowTooltip text={allActors} isOverflow={isActorsOverflow}>
         <p className={styles.actor} ref={actorsRef}>
           {allActors}
         </p>
-      </span>
+      </OverflowTooltip>
       <div className={styles.rating}>
         {movieDetail.watchaRating && (
           <Rating type="watcha" rating={movieDetail.watchaRating} />
