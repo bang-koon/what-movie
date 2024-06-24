@@ -19,8 +19,7 @@
   align-items: center;
   width: 100%;
   height: 60px;
-  margin-bottom: 12px;
-  padding: 0 30px;
+  padding-left: 15%;
   margin-bottom: 30px;
   border-bottom: 1px solid $grey-border;
   h1 {
@@ -42,7 +41,7 @@
 }
 
 .mainContainer {
-  width: 100%;
+  width: 82%;
   & > h2 {
     align-self: flex-start;
     padding-left: 30px;
@@ -65,7 +64,7 @@
   flex-flow: row wrap;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  overflow: hidden;
   @media (max-width: 580px) {
     flex-flow: column nowrap;
     align-items: center;
