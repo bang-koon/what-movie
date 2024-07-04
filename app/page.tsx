@@ -1,6 +1,6 @@
 import "server-only";
 import Main from "./_components/main";
-import { createMovieList } from "./_api/getBoxOfficeList";
+import { createMovieList } from "./api/getBoxOfficeList";
 
 export default async function Home() {
   const movieList = await createMovieList();
