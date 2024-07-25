@@ -51,6 +51,19 @@ export const getMovieDetail = async (
   const poster = detail.posters.split("|")[0];
   const watchaRating = await crawlWatcha(title);
   const tomatoRating = await crawlTomato(detail.titleEng);
+  let isReleased = true;
+  const getDaysToRelease = () => {
+    const today = new Date();
+    const targetDt = new Date(releaseDate);
+    today.setHours(0, 0, 0, 0);
+    targetDt.setHours(0, 0, 0, 0);
+
+    if (today < targetDt) {
+      isReleased = false;
+      return (targetDt.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
+    }
+  };
+  const daysToRelease = getDaysToRelease();
 
   return {
     title,
@@ -60,6 +73,8 @@ export const getMovieDetail = async (
     watchaRating,
     tomatoRating,
     poster,
+    isReleased,
+    daysToRelease,
   };
 };
 

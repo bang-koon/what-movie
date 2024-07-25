@@ -22,6 +22,8 @@ export interface MovieDetail {
   watchaRating: string;
   tomatoRating: string;
   poster: string;
+  isReleased: boolean;
+  daysToRelease?: number;
 }
 
 export interface MainProps {
@@ -34,8 +36,7 @@ export interface CardProps {
   rank?: number;
 }
 
-export interface RatingProps{
-  type: 'watcha' | 'tomato';
+export interface RatingProps {
+  type: "watcha" | "tomato";
   rating: string;
-
 }

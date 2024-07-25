@@ -10,6 +10,11 @@ const Card = ({ movieDetail, hidden, rank }: CardProps) => {
         <article className={`${styles.cardWrap} ${styles.hidden}`}></article>
       ) : (
         <article className={styles.cardWrap}>
+          {!movieDetail.isReleased && (
+            <aside
+              className={styles.dDayTag}
+            >{`D-${movieDetail.daysToRelease}`}</aside>
+          )}
           <div className={styles.posterWrap}>
             <Image
               src={movieDetail.poster}
