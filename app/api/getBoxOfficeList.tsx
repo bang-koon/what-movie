@@ -17,7 +17,9 @@ export const getBoxOfficeList = async () => {
   const params = { key: KEY, targetDt: getDate() };
   const queryParams = new URLSearchParams(params).toString();
 
-  const res = await fetch(`${URL}?${queryParams}`);
+  const res = await fetch(`${URL}?${queryParams}`, {
+    next: { revalidate: 3600 },
+  });
 
   if (!res.ok) {
     throw new Error("get box office error");
