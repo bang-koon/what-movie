@@ -15,16 +15,15 @@
 
 .nav {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 60px;
-  padding-left: 15%;
-  margin-bottom: 30px;
+  margin: 2px 0;
   border-bottom: 1px solid $grey-border;
   h1 {
     color: $head-font;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 400;
     letter-spacing: -0.5px;
   }
@@ -41,10 +40,9 @@
 }
 
 .mainContainer {
-  width: 82%;
+  width: 66%;
   & > h2 {
     align-self: flex-start;
-    padding-left: 30px;
     color: $head-font;
     font-size: 20px;
     font-weight: 500;

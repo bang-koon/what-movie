@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Header = () => (
   <header className={styles.nav}>
-    <h1>what movie</h1>
+    <h1>영화 뭐 볼래?</h1>
     {/* <Calendar /> */}
   </header>
 );
