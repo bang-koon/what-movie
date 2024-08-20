@@ -124,19 +124,21 @@
 }
 
 .tooltip::after {
+  position: absolute;
   visibility: hidden;
   content: attr(data-title);
-  position: absolute;
-  left: 50%;
+  left: -0.1rem;
+  top: 100%;
   width: max-content;
   max-width: 200px;
-  transform: translateX(-50%);
+  max-height: 300px;
   padding: 5px;
   border: $grey-border 1px solid;
   border-radius: 3px;
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.2s, visibility 0.2s;
+  overflow-y: auto;
 }
 
 .tooltip.overflow:hover::after {
@@ -144,6 +146,7 @@
   background-color: black;
   color: whitesmoke;
   opacity: 0.9;
+  font-size: 14px;
 }
 
 .dDayTag {
