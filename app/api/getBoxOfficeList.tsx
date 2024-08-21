@@ -73,6 +73,7 @@ export const getMovieDetail = async (
     watchaRating,
     tomatoRating,
     poster,
+    plot: detail.plots.plot[0].plotText,
     isReleased,
     daysToRelease,
   };

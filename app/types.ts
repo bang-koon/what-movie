@@ -24,6 +24,7 @@ export interface MovieDetail {
   poster: string;
   isReleased: boolean;
   daysToRelease?: number;
+  plot: string;
 }
 
 export interface MainProps {
