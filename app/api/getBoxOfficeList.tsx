@@ -10,9 +10,14 @@ const getDate = () => {
   const day = yesterday.getDate().toString().padStart(2, "0");
   return `${year}${month}${day}`;
 };
+
 export const getBoxOfficeList = async () => {
   const URL = process.env.KOBIS_URL;
   const KEY = process.env.KOBIS_KEY as string;
+
+  if (!URL || !KEY) {
+    throw new Error("KOBIS_URL or KOBIS_KEY is not set");
+  }
 
   const params = { key: KEY, targetDt: getDate() };
   const queryParams = new URLSearchParams(params).toString();
@@ -33,6 +38,10 @@ export const getMovieDetail = async (
 ): Promise<MovieDetail> => {
   const URL = process.env.KMDB_URL;
 
+  if (!URL) {
+    throw new Error("KMDB_URL is not set");
+  }
+
   const params = {
     releaseDts: releaseDate.replaceAll("-", ""),
     title,
@@ -46,12 +55,13 @@ export const getMovieDetail = async (
 
   const detail = (await res.json()).Data[0].Result[0];
 
-  // data
+  const [watchaData, tomatoRating] = await Promise.all([
+    crawlWatcha(title),
+    crawlTomato(detail.titleEng),
+  ]);
+
   const actors = detail.actors.actor.map((actor: Actor) => actor.actorNm);
   const poster = detail.posters.split("|")[0];
-  const watchaRating = (await crawlWatcha(title)).rating;
-  const still = (await crawlWatcha(title)).still;
-  const tomatoRating = await crawlTomato(detail.titleEng);
   let isReleased = true;
   const getDaysToRelease = () => {
     const today = new Date();
@@ -71,8 +81,8 @@ export const getMovieDetail = async (
     titleEn: detail.titleEng,
     directors: detail.directors.director[0].directorNm,
     actors,
-    watchaRating,
-    still,
+    watchaRating: watchaData.rating,
+    still: watchaData.still,
     tomatoRating,
     poster,
     plot: detail.plots.plot[0].plotText,
