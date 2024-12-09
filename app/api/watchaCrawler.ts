@@ -57,11 +57,6 @@ const saveStillToDB = async (title: string, imageUrl: string) => {
       { $set: { title, imageUrl, createdAt: new Date() } },
       { upsert: true }
     );
-
-    await collection.createIndex(
-      { createdAt: 1 },
-      { expireAfterSeconds: 2592000 }
-    );
   } catch (error) {
     console.error("Error saving to the database:", error);
   }
