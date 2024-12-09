@@ -8,34 +8,25 @@
 }
 
 .layout {
+  width: 100%;
   min-width: 260px;
   margin: auto;
   @include flexCenter;
 }
 
-.nav {
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 60px;
   margin: 2px 0;
-  border-bottom: 1px solid $grey-border;
-  h1 {
-    color: $head-font;
-    font-size: 24px;
-    font-weight: 400;
-    letter-spacing: -0.5px;
-  }
-  p {
-    width: 36px;
-    color: $grey-font;
-    margin: 8px 0 0 16px;
-    padding: 4px;
-    cursor: pointer;
-    &:hover {
-      color: $grey-hover;
-    }
+  .nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 66%;
+    padding: 0 12px;
   }
 }
 
@@ -60,7 +51,7 @@
 .cardContainer {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   overflow: hidden;
   @media (max-width: 580px) {
