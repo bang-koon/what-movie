@@ -49,7 +49,8 @@ export const getMovieDetail = async (
   // data
   const actors = detail.actors.actor.map((actor: Actor) => actor.actorNm);
   const poster = detail.posters.split("|")[0];
-  const watchaRating = await crawlWatcha(title);
+  const watchaRating = (await crawlWatcha(title)).rating;
+  const still = (await crawlWatcha(title)).still;
   const tomatoRating = await crawlTomato(detail.titleEng);
   let isReleased = true;
   const getDaysToRelease = () => {
