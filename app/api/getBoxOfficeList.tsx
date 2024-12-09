@@ -72,6 +72,7 @@ export const getMovieDetail = async (
     directors: detail.directors.director[0].directorNm,
     actors,
     watchaRating,
+    still,
     tomatoRating,
     poster,
     plot: detail.plots.plot[0].plotText,

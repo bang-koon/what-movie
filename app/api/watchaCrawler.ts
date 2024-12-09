@@ -1,9 +1,10 @@
 import puppeteer from "puppeteer";
+import getClientPromise from "../lib/db";
 
 const crawlWatcha = async (title: string) => {
   const href = await getWatchaUrl(title);
   const rating = await getWatchaRating(href);
-  const still = await getWatchaStill(href);
+  const still = await getWatchaStill(title, href);
   return { still, rating };
 };
 
@@ -27,9 +28,53 @@ export const getWatchaUrl = async (title: string) => {
   return href;
 };
 
+const getStillFromDB = async (title: string): Promise<string | null> => {
+  const dbName = "what-movie";
+  const collectionName = "stills";
+  try {
+    const client = await getClientPromise;
+    const database = client.db(dbName);
+    const collection = database.collection(collectionName);
+
+    const document = await collection.findOne({ title });
+    return document ? document.imageUrl : null;
+  } catch (error) {
+    console.error("Error fetching from the database:", error);
+    return null;
+  }
+};
+
+const saveStillToDB = async (title: string, imageUrl: string) => {
+  const dbName = "what-movie";
+  const collectionName = "stills";
+  try {
+    const client = await getClientPromise;
+    const database = client.db(dbName);
+    const collection = database.collection(collectionName);
+
+    await collection.updateOne(
+      { title },
+      { $set: { title, imageUrl, createdAt: new Date() } },
+      { upsert: true }
+    );
+
+    await collection.createIndex(
+      { createdAt: 1 },
+      { expireAfterSeconds: 2592000 }
+    );
+  } catch (error) {
+    console.error("Error saving to the database:", error);
+  }
+};
+
 // 상세페이지 주소에서 이미지 찾기
-export const getWatchaStill = async (href: string) => {
+export const getWatchaStill = async (title: string, href: string) => {
   if (href?.includes("ml>")) return "";
+
+  const cachedImageUrl = await getStillFromDB(title);
+  if (cachedImageUrl) {
+    return cachedImageUrl;
+  }
 
   const browser = await puppeteer.launch({
     headless: true,
@@ -54,18 +99,21 @@ export const getWatchaStill = async (href: string) => {
 
   const body = await page.evaluate(() => document.body.innerHTML);
 
-  // background-image URL 추출
   const urlPattern = /background-image:\s*url\((.*?)\)/;
   const urlMatch = body.match(urlPattern);
   const imageUrl = urlMatch ? urlMatch[1] : "";
 
   await browser.close();
 
+  if (imageUrl) {
+    await saveStillToDB(title, imageUrl);
+  }
+
   return imageUrl;
 };
 
 // 상세페이지 주소에서 평점 찾기
-export const getWatchaRating = async (href: string | null) => {
+export const getWatchaRating = async (href: string) => {
   if (href?.includes("ml>")) return "";
 
   const URL = `https://pedia.watcha.com/ko-KR/contents/${href}`;
