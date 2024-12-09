@@ -20,6 +20,7 @@ export interface MovieDetail {
   directors: string;
   actors: string[];
   watchaRating: string;
+  still: string;
   tomatoRating: string;
   poster: string;
   isReleased: boolean;
