@@ -12,36 +12,36 @@ const Main = ({ movieList }: MainProps) => {
   );
 
   useEffect(() => {
-    const body = document.body;
+    const container = document.querySelector(
+      `.${styles.backgroundContainer}`
+    ) as HTMLElement;
     if (backgroundImage) {
-      body.style.transition = "opacity 0.5s ease-in-out";
-      body.style.opacity = "0.7";
+      container.style.opacity = "0.7";
       setTimeout(() => {
-        body.style.backgroundImage = `url(${backgroundImage})`;
-        body.style.opacity = "1";
+        container.style.backgroundImage = `url(${backgroundImage})`;
+        container.style.opacity = "1";
       }, 200);
-    } else {
-      body.style.backgroundImage = "";
     }
   }, [backgroundImage]);
 
   return (
-    <main className={styles.mainContainer}>
-      <div className={styles.cardContainer}>
-        {movieList.map((v, i) => (
-          <Card
-            movieDetail={movieList[i]}
-            setBackgroundImage={setBackgroundImage}
-            hoveredCard={hoveredCard}
-            setHoveredCard={setHoveredCard}
-            key={i}
-            rank={i + 1}
-          />
-        ))}
-        <Card movieDetail={movieList[0]} hidden={true}></Card>
-        <Card movieDetail={movieList[0]} hidden={true}></Card>
-      </div>
-    </main>
+    <>
+      <div className={styles.backgroundContainer}></div>
+      <main className={styles.mainContainer}>
+        <div className={styles.cardContainer}>
+          {movieList.map((v, i) => (
+            <Card
+              movieDetail={movieList[i]}
+              setBackgroundImage={setBackgroundImage}
+              hoveredCard={hoveredCard}
+              setHoveredCard={setHoveredCard}
+              key={i}
+              rank={i + 1}
+            />
+          ))}
+        </div>
+      </main>
+    </>
   );
 };
 

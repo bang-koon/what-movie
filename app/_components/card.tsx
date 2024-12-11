@@ -7,7 +7,6 @@ import CardContents from "./cardContents";
 
 const Card = ({
   movieDetail,
-  hidden,
   rank,
   setBackgroundImage,
   hoveredCard,
@@ -28,44 +27,40 @@ const Card = ({
     }
   };
 
+  const isHidden = hoveredCard !== null && hoveredCard !== rank;
+  const isHovered = hoveredCard === rank;
+
   return (
-    <>
-      {hidden ? (
-        <article className={`${styles.cardWrap} ${styles.hidden}`}></article>
-      ) : (
-        <article
-          className={`${styles.cardWrap} ${
-            hoveredCard !== null && hoveredCard !== rank ? styles.invisible : ""
-          }`}
-        >
-          {!movieDetail.isReleased && (
-            <aside
-              className={styles.dDayTag}
-            >{`D-${movieDetail.daysToRelease}`}</aside>
-          )}
-          <div
-            className={styles.posterWrap}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Image
-              src={movieDetail.poster}
-              alt={movieDetail.title}
-              fill
-              objectFit="cover"
-              quality={100}
-            />
-            <span className={styles.cardRankBox}>
-              <p className={styles.cardRank}>{rank ? rank : ""}</p>
-            </span>
-            <div className={styles.overlay}>
-              <p className={styles.hiddenScroll}>{movieDetail.plot}</p>
-            </div>
-          </div>
-          <CardContents movieDetail={movieDetail} />
-        </article>
+    <article
+      className={`${styles.cardWrap} ${isHidden ? styles.hidden : ""}`}
+      style={{ transform: isHovered ? "scale(1.2)" : "scale(1)" }}
+    >
+      {!movieDetail.isReleased && (
+        <aside
+          className={styles.dDayTag}
+        >{`D-${movieDetail.daysToRelease}`}</aside>
       )}
-    </>
+      <div
+        className={styles.posterWrap}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Image
+          src={movieDetail.poster}
+          alt={movieDetail.title}
+          fill
+          objectFit="cover"
+          quality={100}
+        />
+        <span className={styles.cardRankBox}>
+          <p className={styles.cardRank}>{rank ? rank : ""}</p>
+        </span>
+        <div className={styles.overlay}>
+          <p className={styles.hiddenScroll}>{movieDetail.plot}</p>
+        </div>
+      </div>
+      <CardContents movieDetail={movieDetail} />
+    </article>
   );
 };
 

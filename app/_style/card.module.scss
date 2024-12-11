@@ -9,6 +9,7 @@
   max-width: 250px;
   min-width: 130px;
   margin: 10px 12px;
+  transition: transform 0.3s ease-in-out;
   @media (max-width: 580px) {
     width: 50%;
   }
