@@ -48,18 +48,18 @@ const CardContents = ({ movieDetail }: CardContentsProps) => {
         <OverflowTooltip text={movieDetail.title} isOverflow={isTitleOverflow}>
           <h3 ref={titleRef}>{movieDetail.title}</h3>
         </OverflowTooltip>
-        <OverflowTooltip
+        {/* <OverflowTooltip
           text={movieDetail.directors}
           isOverflow={isDirectorOverflow}
         >
           <p ref={directorRef}>{movieDetail.directors}</p>
-        </OverflowTooltip>
+        </OverflowTooltip> */}
       </div>
-      <OverflowTooltip text={allActors} isOverflow={isActorsOverflow}>
+      {/* <OverflowTooltip text={allActors} isOverflow={isActorsOverflow}>
         <p className={styles.actor} ref={actorsRef}>
           {allActors}
         </p>
-      </OverflowTooltip>
+      </OverflowTooltip> */}
       <div className={styles.rating}>
         {movieDetail.watchaRating && (
           <Rating type="watcha" rating={movieDetail.watchaRating} />

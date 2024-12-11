@@ -2,6 +2,7 @@
 
 .cardWrap {
   @include flexCenter;
+  flex-grow: 1;
   position: relative;
   flex-direction: column;
   width: 16%;
@@ -10,7 +11,6 @@
   margin: 10px 12px;
   @media (max-width: 580px) {
     width: 50%;
-    border-bottom: #dbdbdb solid 1px;
   }
 }
 
@@ -29,7 +29,7 @@
 }
 
 .cardRank {
-  color: azure;
+  color: $body-font;
   font-size: 0.9rem;
 }
 
@@ -37,7 +37,6 @@
   position: relative;
   width: 100%;
   padding-top: 145.37%;
-  border: 1px solid $grey-border;
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
@@ -113,10 +112,9 @@
   flex-flow: column;
   width: 100%;
   padding: 4px;
-
   p {
     font-size: 14px;
-    color: #434343;
+    color: $body-font;
     letter-spacing: -0.25px;
     line-height: 15px;
     overflow: hidden;
@@ -124,7 +122,7 @@
     white-space: nowrap;
   }
   * {
-    margin-top: 3px;
+    margin-top: 2px;
   }
 }
 
