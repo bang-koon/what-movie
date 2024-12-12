@@ -34,8 +34,11 @@ export interface MainProps {
 
 export interface CardProps {
   movieDetail: MovieDetail;
-  hidden?: boolean;
+  empty?: boolean;
   rank?: number;
+  setBackgroundImage?: (image: string) => void;
+  hoveredCard?: number | null | undefined;
+  setHoveredCard?: (rank: number | null | undefined) => void;
 }
 
 export interface RatingProps {
