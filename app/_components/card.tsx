@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../_style/card.module.scss";
 import { CardProps } from "../types";
 import CardContents from "./cardContents";
+import { useIsMobile } from "../hook/useIsMobile";
 
 const Card = ({
   movieDetail,
@@ -13,7 +14,11 @@ const Card = ({
   setHoveredCard,
   empty,
 }: CardProps) => {
+  const isMobile = useIsMobile();
+
   const handleMouseEnter = () => {
+    if (isMobile) return;
+
     if (movieDetail.still && setBackgroundImage) {
       setBackgroundImage(movieDetail.still);
     }
@@ -23,13 +28,15 @@ const Card = ({
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
+
     if (setHoveredCard) {
       setHoveredCard(null);
     }
   };
 
-  const isHidden = hoveredCard !== null && hoveredCard !== rank;
-  const isHovered = hoveredCard === rank;
+  const isHidden = !isMobile && hoveredCard !== null && hoveredCard !== rank;
+  const isHovered = !isMobile && hoveredCard === rank;
 
   return (
     <article
