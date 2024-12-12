@@ -6,10 +6,11 @@ import { MainProps } from "../types";
 import Card from "./card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useIsMobile } from "../hook/useIsMobile";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import type { Swiper as SwiperType } from "swiper";
 
 const Main = ({ movieList }: MainProps) => {
   const isMobile = useIsMobile();
@@ -19,6 +20,10 @@ const Main = ({ movieList }: MainProps) => {
   );
   const [currentImage, setCurrentImage] = useState<string | null>(null);
   const [nextImage, setNextImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    setBackgroundImage(movieList[0].still);
+  }, []);
 
   useEffect(() => {
     if (backgroundImage) {
@@ -54,14 +59,19 @@ const Main = ({ movieList }: MainProps) => {
           <Swiper
             slidesPerView={1}
             spaceBetween={30}
-            mousewheel={true}
             loop={true}
             pagination={{
               clickable: true,
             }}
             navigation={true}
-            modules={[Pagination, Navigation]}
+            mousewheel={true}
+            modules={[Pagination, Navigation, Mousewheel]}
             className={styles.cardContainer}
+            onSlideChange={(swiper: SwiperType) => {
+              const realIndex = swiper.realIndex;
+              const currentStill = movieList[realIndex].still;
+              setBackgroundImage(currentStill);
+            }}
           >
             {movieList.map((v, i) => (
               <SwiperSlide key={i}>
