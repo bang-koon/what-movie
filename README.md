@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+: 박스오피스의 왓챠, 로튼토마토 평점 제공
+---
+<span> 
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/e6b6a1f7-cd43-44c4-afdd-72b1f2a7050a" />
+</span>
+<pre>
+What
+Movie
+</pre>
 
-## Getting Started
+<br>
 
-First, run the development server:
+## UI
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+<details>
+	<summary><span style="font-weight:bold">데스크탑</span></summary>
+  	<div markdown="1">
+      <img width="100%" alt="image" src="https://github.com/user-attachments/assets/eaae6d4e-cba9-4ee4-8003-a5b1fdfa341b" />
+  	</div>
+</details>
+<details>
+	<summary><span style="font-weight:bold">포스터 호버</span></summary>
+  	<div markdown="1">
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/7351308b-eced-4ad3-81d4-a71030a27580" />
+  	</div>
+</details>
+<details>
+	<summary><span style="font-weight:bold">모바일</span></summary>
+  	<div markdown="1">
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/600e2d62-7e87-4a0c-9bc3-2054321ed4e1" />
+  	</div>
+</details>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 주요 기능
+- 일일 박스오피스 순위 표시
+- 영화 상세 정보 제공 (감독, 배우, 줄거리 등)
+- 왓챠, 로튼토마토 평점 정보
+- 반응형 UI
+- ISR
+- DB 데이터 캐싱
+  
+### 스택
+- Next.js 13
+- TypeScript
+- MongoDB
+- SCSS
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### API
+- 영화진흥위원회 (KOBIS)
+- 한국영화데이터베이스 (KMDB)
+- 왓챠/로튼토마토 (크롤링)
