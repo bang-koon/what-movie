@@ -1,10 +1,7 @@
 import { MongoClient } from "mongodb";
 
 const URI = process.env.DB_URI as string;
-const options = {
-  autoReconnect: true,
-  retryWrites: true,
-};
+const options = {};
 
 let clientPromise: Promise<MongoClient>;
 
