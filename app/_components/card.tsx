@@ -11,6 +11,7 @@ const Card = ({
   setBackgroundImage,
   hoveredCard,
   setHoveredCard,
+  empty,
 }: CardProps) => {
   const handleMouseEnter = () => {
     if (movieDetail.still && setBackgroundImage) {
@@ -33,7 +34,10 @@ const Card = ({
   return (
     <article
       className={`${styles.cardWrap} ${isHidden ? styles.hidden : ""}`}
-      style={{ transform: isHovered ? "scale(1.2)" : "scale(1)" }}
+      style={{
+        transform: isHovered ? "scale(1.2)" : "scale(1)",
+        visibility: empty ? "hidden" : "visible",
+      }}
     >
       {!movieDetail.isReleased && (
         <aside
