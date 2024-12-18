@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import type { Swiper as SwiperType } from "swiper";
+import Loading from "./loading";
 
 const Main = ({ movieList }: MainProps) => {
   const isMobile = useIsMobile();
@@ -48,7 +49,8 @@ const Main = ({ movieList }: MainProps) => {
 
   return (
     <>
-      {isLoaded ? (
+      {!isLoaded && <Loading />}
+      {isLoaded && (
         <>
           <div
             className={styles.backgroundContainer}
@@ -113,7 +115,7 @@ const Main = ({ movieList }: MainProps) => {
             )}
           </main>
         </>
-      ) : null}
+      )}
     </>
   );
 };

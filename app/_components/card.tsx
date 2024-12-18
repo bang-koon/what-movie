@@ -5,6 +5,7 @@ import styles from "../_style/card.module.scss";
 import { CardProps } from "../types";
 import CardContents from "./cardContents";
 import { useIsMobile } from "../hook/useIsMobile";
+import { useState } from "react";
 
 const Card = ({
   movieDetail,
@@ -15,6 +16,7 @@ const Card = ({
   empty,
 }: CardProps) => {
   const isMobile = useIsMobile();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleMouseEnter = () => {
     if (isMobile) return;
@@ -56,12 +58,14 @@ const Card = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
+        {!isImageLoaded && <div className={styles.skeleton} />}
         <Image
           src={movieDetail.poster}
           alt={movieDetail.title}
           fill
           objectFit="cover"
           quality={100}
+          onLoadingComplete={() => setIsImageLoaded(true)}
         />
         <span className={styles.cardRankBox}>
           <p className={styles.cardRank}>{rank ? rank : ""}</p>
