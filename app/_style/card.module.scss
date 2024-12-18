@@ -235,3 +235,14 @@
 .hiddenScroll::-webkit-scrollbar {
   display: none;
 }
+
+.skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $grey-border;
+  border-radius: 5px;
+  z-index: 1;
+}
