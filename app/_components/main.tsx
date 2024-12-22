@@ -32,7 +32,7 @@ const Main = ({ movieList }: MainProps) => {
         setIsLoaded(true);
       };
     }
-  }, []);
+  }, [movieList]);
 
   useEffect(() => {
     if (backgroundImage) {
