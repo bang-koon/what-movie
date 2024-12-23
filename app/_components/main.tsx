@@ -47,6 +47,19 @@ const Main = ({ movieList }: MainProps) => {
     }
   }, [backgroundImage]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth > 1166) {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("resize", handleScroll);
+
+    return () => window.removeEventListener("resize", handleScroll);
+  }, []);
+
   return (
     <>
       {!isLoaded && <Loading />}
